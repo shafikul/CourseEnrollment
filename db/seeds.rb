@@ -10,5 +10,11 @@
 User.create!(email:'saa@gm.com', password:'12345678', password_confirmation: '12345678')
 User.create!(email:'sas@gm.com', password:'12345678', password_confirmation: '12345678')
 User.create!(email:'sss@gm.com', password:'12345678', password_confirmation: '12345678')
+Semester.create(name: 'Term1', semester_type: 'fall');
+Semester.create(name: 'Term2', semester_type: 'winter');
+Semester.create(name: 'Term3', semester_type: 'fall');
+Semester.create(name: 'Term4', semester_type: 'winter');
+
+
 
 
