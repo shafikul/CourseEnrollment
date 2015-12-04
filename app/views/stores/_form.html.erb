@@ -1,0 +1,24 @@
+<div id="notification"></div>
+<%= form_for(@store) do |f| %>
+  <% if @store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% @store.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :Semester %>
+      <%= f.select("semester_id", Semester.all.collect {|s| [ s.name, s.id ] }, {include_blank: true}, {class: 'semester-select'}) %>
+    </div>
+    <div id="courseHolder">
+
+    </div>
+
+
+<% end %>

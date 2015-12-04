@@ -11,10 +11,13 @@
     </div>
   <% end %>
 
-<%= select("semister", "id", Semester.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, {class: 'semester-select'})%>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :course_no %><br>
+    <%= f.text_field :course_no %>
   </div>
   <div class="actions">
     <%= f.submit %>

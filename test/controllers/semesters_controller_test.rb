@@ -18,7 +18,7 @@ class SemestersControllerTest < ActionController::TestCase
 
   test "should create semester" do
     assert_difference('Semester.count') do
-      post :create, semester: { name: @semester.name, type: @semester.type }
+      post :create, semester: { name: @semester.name, semester_type: @semester.semester_type }
     end
 
     assert_redirected_to semester_path(assigns(:semester))
@@ -35,7 +35,7 @@ class SemestersControllerTest < ActionController::TestCase
   end
 
   test "should update semester" do
-    patch :update, id: @semester, semester: { name: @semester.name, type: @semester.type }
+    patch :update, id: @semester, semester: { name: @semester.name, semester_type: @semester.semester_type }
     assert_redirected_to semester_path(assigns(:semester))
   end
 

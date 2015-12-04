@@ -1,19 +1,27 @@
 Rails.application.routes.draw do
 
-  resources :semesters do
+  resources :course_offers
+  resources :stores do
     collection do
-      get :getCourses
+      post :addCourse
+      post :updateGPA
+      delete :deleteCourse
     end
   end
   resources :courses
-  resources :dummies
   devise_for :users
+
+  resources :semesters do
+    member do
+      get 'getCourses'
+    end
+  end
 
   root 'pages#Index'
 
-  get '/home' => 'pages#Home'
-
   get '/users/:id' => 'pages#Profile'
+
+  get '/home' => 'pages#Home'
 
   get '/explore' => 'pages#Explore'
 

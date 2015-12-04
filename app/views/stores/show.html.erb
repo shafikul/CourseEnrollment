@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @store.user_id %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @store.semester_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @store.course_id %>
+</p>
+
+<p>
+  <strong>Cgpa:</strong>
+  <%= @store.cgpa %>
+</p>
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

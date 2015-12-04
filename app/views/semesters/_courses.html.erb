@@ -1,0 +1,6 @@
+<% courses.each do |course| %>
+    <div>
+      <input type="checkbox" course-id ="<%=course.id%>"/>
+      <%= course.name %>
+    </div>
+<% end %>

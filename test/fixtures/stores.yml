@@ -4,10 +4,10 @@ one:
   user_id: 1
   semester_id: 1
   course_id: 1
-  cgpa: 9.99
+  cgpa: 1.5
 
 two:
   user_id: 1
   semester_id: 1
   course_id: 1
-  cgpa: 9.99
+  cgpa: 1.5

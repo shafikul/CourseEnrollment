@@ -60,9 +60,10 @@ class SemestersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def getCourses
-    data = [{name: 'CSE201'},{name: 'CSE304'}]
-    render json: data
+    @semester = Semester.find params[:id]
+    @courses = @semester.courses
   end
 
   private
@@ -73,6 +74,6 @@ class SemestersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def semester_params
-      params.require(:semester).permit(:name, :type)
+      params.require(:semester).permit(:name, :semester_type)
     end
 end
