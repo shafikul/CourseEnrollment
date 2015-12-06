@@ -1,1 +1,2 @@
-$('#notification').html("<p><%= @message %></p>")
+$('#notification').html("<p><%= @message %></p>");
+$('#register-course').append('<tr id= <%= @stores.id %> ><td ><%= @stores.semester.name %></t> <td><%= @stores.course.name%></td></tr>');

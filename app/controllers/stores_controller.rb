@@ -68,7 +68,7 @@ class StoresController < ApplicationController
      course  = Course.find course_id
      semester_id = params[:semester_id]
      user = User.find (current_user.id)
-     user.stores.create({course_id: course_id, semester_id: semester_id })
+     @stores = user.stores.create({course_id: course_id, semester_id: semester_id })
      @message = "You have Successfully registered in #{course.name} course"
     else
       @message = "You need to log first"
@@ -77,9 +77,9 @@ class StoresController < ApplicationController
   end
 
   def updateGPA
-    user = User.find params[:user_id]
-    semester_id = params[:semester_id]
-    course_id = params[:course_id]
+    user = User.find_by_email params[:user_id]
+    semester_id = Semester.find_by_name params[:semester_id]
+    course_id = Course.find_by_name params[:course_id]
     current_store = user.stores.where({course_id: course_id, semester_id: semester_id}).first
     current_store.cgpa = params[:cgpa]
     if current_store.save!
@@ -92,13 +92,18 @@ class StoresController < ApplicationController
   def deleteCourse
 
     if current_user.present?
-    course_id = params[:id]
-    course  = Course.find course_id
-    user = User.find(current_user.id)
-    semester_id = params[:semester_id]
-    current_store = user.stores.where({course_id: course_id, semester_id: semester_id}).first
-    current_store.destroy
-    @message = "You are unregistared from #{course.name}"
+
+      course_id = params[:id]
+      course  = Course.find course_id
+      user = User.find(current_user.id)
+      semester_id = params[:semester_id]
+      current_store = user.stores.where({course_id: course_id, semester_id: semester_id})
+      @row_index = Store.where({user_id: current_user.id, course_id: course_id, semester_id: semester_id})
+
+      @index = @row_index.first.id
+      current_store.destroy_all
+      @message = "You are unregistared from #{course.name}"
+
     else
       @message = "Login first"
     end

@@ -17,6 +17,10 @@ class PagesController < ApplicationController
     @user = User.find current_user.id
     @stores = @user.stores
     @passedCourse = @stores.where("cgpa >= ?", 2.0 )
+    respond_to do |format|
+      format.html {render 'pages/Home'}
+      format.js
+    end
   end
 
   def Profile

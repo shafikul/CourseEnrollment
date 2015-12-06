@@ -5,7 +5,7 @@ $(document).ready(function(){
         var courseId = $(this).find('td:eq(2)').text();
         var gpa = prompt('Enter a CGPA');
         var $this = $(this);
-        //console.log(userId);
+        //alert(userId);
         //console.log(semesterId.val());
         //console.log(courseId.val());
         $.ajax({
@@ -21,4 +21,12 @@ $(document).ready(function(){
             $this.find('td:eq(3)').html(data.cgpa);
         });
     });
+
+    $('#show-form').click(function(e){
+        e.preventDefault();
+        $('#result-form').toggle();
+
+    });
+
+
 });

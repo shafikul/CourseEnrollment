@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
-    $('#store_semester_id').change(function(){
+
+    $(document).on('change','#store_semester_id', function(){
         var selectedOption = $(this).find("option:selected");
         $.ajax({
             method: "GET",

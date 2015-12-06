@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   root 'pages#Index'
 
+  get '/admin' => 'admin#index'
+
   get '/users/:id' => 'pages#Profile'
 
   get '/home' => 'pages#Home'

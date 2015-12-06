@@ -1,31 +1,5 @@
-<div class='row'>
-  <div class='col-sm-12'>
-    <p>
-    <form>
-      <legend>Search</legend>
-      <div class='col-xs-4'>
-        <input type='text' class='form-control' value='<%= params[:keyword] %>' name='keyword' placeholder='Keyword' >
-      </div>
-    </form>
-    </p>
-    <p class='pull-right'>
-      <a href='#' id='show-form' class='btn btn-primary'>Publish Result</a>
-    </p>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Welcome to our Course Enrollment System</h1>
   </div>
 </div>
-<table class="table table-hover">
-<tr>
-  <th>User_id</th>
-  <th>Semester_id</th>
-  <th>Course_id</th>
-  <th>GPA</th>
-  </tr>
-<% @stores.each do |store| %>
-      <tr class="update-cgpa" id="<%= store.id %>">
-        <td><%= store.user_id %></td>
-        <td><%= store.semester_id %></td>
-        <td><%= store.course_id %></td>
-        <td><%= store.cgpa %></td>
-      </tr>
-<% end %>
-</table>
