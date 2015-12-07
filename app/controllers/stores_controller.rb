@@ -68,8 +68,12 @@ class StoresController < ApplicationController
      course  = Course.find course_id
      semester_id = params[:semester_id]
      user = User.find (current_user.id)
-     @stores = user.stores.create({course_id: course_id, semester_id: semester_id })
-     @message = "You have Successfully registered in #{course.name} course"
+     if user.stores.where({course_id: course_id, semester_id: semester_id }).present?
+       @message = "You already registared into this course."
+     else
+       @stores = user.stores.create({course_id: course_id, semester_id: semester_id })
+       @message = "You have Successfully registered in #{course.name} course"
+     end
     else
       @message = "You need to log first"
     end

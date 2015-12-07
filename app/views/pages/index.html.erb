@@ -1,0 +1,18 @@
+<%	if user_signed_in?	%>
+    <% if is_admin?(current_user) %>
+        <section class="user_info">
+          <%= render 'admin' %>
+        </section>
+    <% else %>
+        <section class="user_info">
+          <%= render 'home' %>
+        </section>
+    <% end %>
+<%	else %>
+    <div class="center jumbotron">
+      <h1>Welcome to the Course Enrollment System</h1>
+      <h3>
+        Please <%= link_to 'Sign Up', new_user_registration_path %> to visit the app
+      </h3>
+    </div>
+<%	end	%>

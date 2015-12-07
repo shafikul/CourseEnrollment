@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>Profile of <%= current_user.email %></p>
+        <p>Passed In: <%= totalCredit(@passedCourse)%> Credit</p>
+        <p>CGPA In Passed Courses: <%= calculategpa(@passedCourse) %></p>
+        <p> Currently Enrolled In: <%= @registercourse.count() %> Courses</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p>Registared Courses</p>
+            <table class="table table-hover" id="register-course">
+              <tr>
+                <th>Semester_id</th>
+                <th>Course_id</th>
+              </tr>
+              <tbody>
+              <% @registercourse.each do |store| %>
+                  <tr id="<%= store.id %>">
+                    <td><%= store.semester.name %></td>
+                    <td><%= store.course.name %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+
+        <p>Published Result Stats</p>
+        <table class="table table-hover">
+          <tr>
+            <th>Course_id</th>
+            <th>CGPA</th>
+          </tr>
+          <% @passedCourse.each do |store| %>
+              <tr id="<%= store.id %>">
+                <td><%= store.course.name %></td>
+                <td><%= store.cgpa %></td>
+              </tr>
+          <% end %>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>Feeds</p>
+        <ul>
+          <li><%= link_to 'Registar Courses', new_store_path, id: "new_link", remote: true %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+$('#msgH').html('<%= j @message %>');
+$('#offer_link').toggle();
+$('#new_course_offer').toggle();
+$('#course-offer').append('<tr id= <%= @course_offer.id %> ><td ><%= @course_offer.semester.name %></t> <td><%= @course_offer.course.name%></td><td><%=  @course_offer.course.course_no %></td></tr>');

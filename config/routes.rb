@@ -17,14 +17,14 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'pages#Index'
+  root 'pages#index'
 
   get '/admin' => 'admin#index'
 
-  get '/users/:id' => 'pages#Profile'
+  get '/users/:id' => 'pages#profile'
 
-  get '/home' => 'pages#Home'
+  get '/home' => 'pages#home'
 
-  get '/explore' => 'pages#Explore'
+  get '/explore' => 'pages#explore'
 
 end

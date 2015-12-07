@@ -28,11 +28,15 @@ class CourseOffersController < ApplicationController
 
     respond_to do |format|
       if @course_offer.save
+        @message = "course offered successfully"
         format.html { redirect_to @course_offer, notice: 'Course offer was successfully created.' }
         format.json { render :show, status: :created, location: @course_offer }
+        format.js
       else
+        @message = "Error! Course can't be offered!"
         format.html { render :new }
         format.json { render json: @course_offer.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

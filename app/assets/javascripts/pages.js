@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //$('#result-form').toggle();
     $('.update-cgpa').click(function(){
         var userId = $(this).find('td:eq(0)').text();
         var semesterId = $(this).find('td:eq(1)').text();

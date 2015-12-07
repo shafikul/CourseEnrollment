@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
-  def Index
+  def index
+
     if(params[:keyword].present?)
       @courses = Course.find_by_course_no(params[:keyword])
       if(@courses.present?)
@@ -11,22 +12,27 @@ class PagesController < ApplicationController
     else
       @stores = Store.all
     end
+
+    if current_user.present?
+      @courseoffer = CourseOffer.all
+      @user = User.find current_user.id
+      @passedCourse = @user.stores.where("cgpa >= ?", 2.0 )
+      @registercourse = @user.stores.where(:cgpa => nil)
+    end
+
   end
 
-  def Home
-    @user = User.find current_user.id
-    @stores = @user.stores
-    @passedCourse = @stores.where("cgpa >= ?", 2.0 )
+  def home
     respond_to do |format|
-      format.html {render 'pages/Home'}
+      format.html {redirect_to root_path}
       format.js
     end
   end
 
-  def Profile
+  def profile
     @email = params[:id]
   end
 
-  def Explore
+  def explore
   end
 end

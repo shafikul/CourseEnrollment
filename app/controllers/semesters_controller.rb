@@ -28,11 +28,15 @@ class SemestersController < ApplicationController
 
     respond_to do |format|
       if @semester.save
+        @message = "Semester created successfully."
         format.html { redirect_to @semester, notice: 'Semester was successfully created.' }
         format.json { render :show, status: :created, location: @semester }
+        format.js
       else
+        @message = "Error! Semester can't be created."
         format.html { render :new }
         format.json { render json: @semester.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -62,8 +66,12 @@ class SemestersController < ApplicationController
   end
 
   def getCourses
+    @user = User.find current_user.id
     @semester = Semester.find params[:id]
+    # registered_courses = @user.stores.where({semester_id: params[:id]})
     @courses = @semester.courses
+    @registererable_courses = @courses - @user.courses;
+    @registered_courses = @user.courses_by_semester params[:id]
   end
 
   private

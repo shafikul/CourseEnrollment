@@ -28,11 +28,15 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
+        @message = "Course Was Added Successfully."
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
+        format.js
       else
+        @message = "Error!, Course Can't be Added."
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
