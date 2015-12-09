@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :stores, dependent: :destroy
   has_many :courses, through: :stores
+  mount_uploader :image_url, PictureUploader
 
   def courses_by_semester semester_id
     courses = []

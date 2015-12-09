@@ -15,11 +15,8 @@
       <%= f.label :Semester %>
       <%= f.select("semester_id", Semester.all.collect {|s| [ s.name, s.id ] }, {include_blank: true}) %>
     </div>
-    <div class="field">
-      <%= f.label :Course %>
-      <%= f.select("course_id", Course.all.collect {|c| [ c.name, c.id ] }, {include_blank: true}) %>
+    <div id="courseHold">
+
     </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

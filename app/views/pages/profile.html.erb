@@ -1,13 +1,16 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>hello <%= @email %></h1>
+    <h1> <%= @email.fullname %></h1>
+    <%= image_tag @email.image_url.url if @email.image_url? %>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-3">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p>Profile</p>
+        <p>Profile of : <%= @email.email %></p>
+        <p>Name : <%=@email.nickname %>
+        <p>Enrolled Courses : <%=@email.stores.count()%></p>
       </div>
     </div>
   </div>
@@ -25,8 +28,6 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row">
   <div class="col-xs-3 col-xs-offset-9">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -34,5 +35,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="row">
+
 </div>
         

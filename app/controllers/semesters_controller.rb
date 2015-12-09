@@ -1,6 +1,6 @@
 class SemestersController < ApplicationController
   before_action :set_semester, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user?
   # GET /semesters
   # GET /semesters.json
   def index
@@ -74,12 +74,21 @@ class SemestersController < ApplicationController
     @registered_courses = @user.courses_by_semester params[:id]
   end
 
+  def getSemesterCourses
+    @semester = Semester.find params[:id]
+    @courses = @semester.courses
+    @registered_courses = Course.all - @courses
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_semester
       @semester = Semester.find(params[:id])
     end
-
+    def logged_in_user?
+      unless current_user.present? #&& is_admin?(current_user)
+        redirect_to root_url
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def semester_params
       params.require(:semester).permit(:name, :semester_type)

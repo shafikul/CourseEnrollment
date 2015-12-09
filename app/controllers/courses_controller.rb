@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user?
   # GET /courses
   # GET /courses.json
   def index
@@ -75,4 +75,9 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:name, :course_no)
     end
+  def logged_in_user?
+    unless current_user.present? #&& is_admin?(current_user)
+      redirect_to root_url
+    end
+  end
 end

@@ -1,0 +1,12 @@
+<% @courses.each do |course| %>
+    <div>
+      <input type="checkbox" course-id ="courseoffer<%=course.id%>" checked/>
+      <%= course.name %>
+    </div>
+<% end %>
+<% @registered_courses.each do |course| %>
+    <div>
+      <input type="checkbox" class="offered_courses" course-id ="<%=course.id%>"/>
+      <%= course.name %>
+    </div>
+<% end %>

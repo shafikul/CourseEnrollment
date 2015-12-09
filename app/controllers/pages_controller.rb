@@ -15,6 +15,7 @@ class PagesController < ApplicationController
 
     if current_user.present?
       @courseoffer = CourseOffer.all
+
       @user = User.find current_user.id
       @passedCourse = @user.stores.where("cgpa >= ?", 2.0 )
       @registercourse = @user.stores.where(:cgpa => nil)
@@ -30,9 +31,19 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @email = params[:id]
+
+    if current_user.present?
+      @email = User.find current_user.id
+    else
+      redirect_to root_url
+    end
   end
 
   def explore
   end
+
+  def search_by_keyword
+    params[:keyword]
+  end
+
 end

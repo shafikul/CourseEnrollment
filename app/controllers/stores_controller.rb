@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user?
   # GET /stores
   # GET /stores.json
   def index
@@ -120,7 +120,11 @@ class StoresController < ApplicationController
     def set_store
       @store = Store.find(params[:id])
     end
-
+    def logged_in_user?
+      unless current_user.present?
+        redirect_to root_url
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_params
       params.require(:store).permit(:user_id, :semester_id, :course_id, :cgpa)

@@ -5,9 +5,9 @@
         <p>Tasks</p>
         <div id="msgH"></div>
         <ul>
-          <%= link_to 'Create course', new_course_path, id: "course_link", remote: true %></br>
-          <%= link_to 'Create Semester', new_semester_path, id: "semester_link", remote: true %></br>
-          <%= link_to 'Offer Course', new_course_offer_path, id: "offer_link", remote: true %></br>
+          <li><%= link_to 'Create course', new_course_path, id: "course_link", remote: true %></li>
+          <li><%= link_to 'Create Semester', new_semester_path, id: "semester_link", remote: true %></li>
+          <li><%= link_to 'Offer Course', new_course_offer_path, id: "offer_link", remote: true %></li>
         </ul>
       </div>
     </div>
@@ -18,11 +18,11 @@
         <p>Course Offered by Semester</p>
         <table class="table table-hover" id="course-offer">
           <tr>
-            <th>Semester</th>
+            <th>Semester Name</th>
             <th>Course Name</th>
             <th>Course Code</th>
           <% @courseoffer.each do |store| %>
-              <tr class="update-course" id="<%= store.id %>">
+              <tr  id="<%= store.id %>">
                 <td><%= store.semester.name %></td>
                 <td><%= store.course.name %></td>
                 <td><%= store.course.course_no %></td>

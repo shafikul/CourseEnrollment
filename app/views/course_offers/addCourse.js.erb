@@ -1,0 +1,2 @@
+$('#msgH').html('<%= j @message %>');
+$('#course-offer').append('<tr id= <%= @course_offer.id %> ><td><%= @course_offer.semester.name%></td><td><%= @course_offer.course.name%></td><td><%=  @course_offer.course.course_no %></td></tr>');

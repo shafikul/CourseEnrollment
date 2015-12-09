@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :course_offers
+  resources :course_offers do
+    collection do
+      post :addCourse
+      delete :deleteCourse
+    end
+  end
   resources :stores do
     collection do
       post :addCourse
@@ -14,12 +19,14 @@ Rails.application.routes.draw do
   resources :semesters do
     member do
       get 'getCourses'
+      get 'getSemesterCourses'
     end
   end
 
   root 'pages#index'
 
-  get '/admin' => 'admin#index'
+  get 'profile', to: 'pages#profile'
+
 
   get '/users/:id' => 'pages#profile'
 

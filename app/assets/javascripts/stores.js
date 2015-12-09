@@ -1,7 +1,7 @@
-
 $(document).ready(function(){
 
     $(document).on('change','#store_semester_id', function(){
+
         var selectedOption = $(this).find("option:selected");
         $.ajax({
             method: "GET",
@@ -12,7 +12,7 @@ $(document).ready(function(){
                 console.log(data);
             });
     });
-    $(document).on('change','[course-id]',function(){
+    $(document).on('change','.student_courses',function(){
         var semesterId = $(".semester-select option:selected").val();
         var courseId = $(this).attr('course-id');
         if($(this).prop('checked')){

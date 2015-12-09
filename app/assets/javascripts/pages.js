@@ -14,8 +14,7 @@ $(document).ready(function(){
             url: "/stores/updateGPA",
             data: {
                 user_id: userId,
-                course_id: courseId,
-                semester_id: semesterId,
+                course_id: courseId, semester_id: semesterId,
                 cgpa: gpa
             }
         }).success(function(data){
@@ -28,6 +27,13 @@ $(document).ready(function(){
         $('#result-form').toggle();
 
     });
+    $('.form-control').keyup(function()
+    {
+        var $this = $(this);
+        var keyword = $this.value.toString();
+        if (keyword.length > 0)
+        {
 
-
+        }
+    });
 });
