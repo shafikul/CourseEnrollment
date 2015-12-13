@@ -1,40 +1,51 @@
 <div class="jumbotron">
   <div class="container">
-    <h1> <%= @email.fullname %></h1>
-    <%= image_tag @email.image_url.url if @email.image_url? %>
+    <h1> <%= @user.email %></h1>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-3">
+
+      <div class="col-xs-5 col-sm-12">
+        <%= image_tag(@user.image_url.url, :class => 'img-thumbnail img-circle', :align => 'center' ) if @user.image_url?  %>
+        <h4>Contact Information</h4>
+
+        <address>
+          <strong>Nascenia, Inc.</strong><br>
+          <%=@user.userdetail.line1 %>, <%=@user.userdetail.line2 %><br>
+          <%=@user.userdetail.city %>, <%=@user.userdetail.state %> <%=@user.userdetail.zip %><br>
+          <abbr title="Phone">P:</abbr> <%=@user.userdetail.contact_no %>
+        </address>
+
+        <address>
+          <strong>Full Name : <%=@user.fullname %></strong><br>
+          <a href="mailto:#"><%= @user.email%></a>
+        </address>
+        <%= link_to 'Edit', edit_user_userdetail_path(@user, @userdetail), class: 'btn btn-primary' %>
+      </div>
+  </div>
+  <div class="col-xs-9">
     <div class="panel panel-default">
       <div class="panel-body">
-        <p>Profile of : <%= @email.email %></p>
-        <p>Name : <%=@email.nickname %>
-        <p>Enrolled Courses : <%=@email.stores.count()%></p>
+        <p>Enrolled Course Stats</p>
+        <table class="table table-hover">
+          <tr>
+            <th>Semester</th>
+            <th>Course</th>
+            <th>GPA</th>
+          </tr>
+          <% @user.stores.each do |store| %>
+              <tr>
+                <td><%= store.semester.name %>
+                <td><%= store.course.name %></td>
+                <td><%= store.cgpa %></td>
+              </tr>
+          <% end %>
+        </table>
       </div>
     </div>
   </div>
-  <div class="col-xs-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <p>Status</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-3">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <p>Feeds</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-3 col-xs-offset-9">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <p>Trends</p>
-      </div>
-    </div>
-  </div>
+
 </div>
 <div class="row">
 

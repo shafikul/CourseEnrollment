@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     end
   end
   resources :courses
-  devise_for :users
+  devise_for :users, :path => 'users'
+  resources :users do
+    resources :userdetails
+  end
 
   resources :semesters do
     member do

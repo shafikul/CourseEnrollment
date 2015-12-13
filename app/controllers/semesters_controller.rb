@@ -72,6 +72,8 @@ class SemestersController < ApplicationController
     @courses = @semester.courses
     @registererable_courses = @courses - @user.courses;
     @registered_courses = @user.courses_by_semester params[:id]
+
+    # @registered_courses = @registered.stores.where("cgpa >= ?", 2.0 )
   end
 
   def getSemesterCourses

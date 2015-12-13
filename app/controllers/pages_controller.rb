@@ -4,8 +4,11 @@ class PagesController < ApplicationController
 
     if(params[:keyword].present?)
       @courses = Course.find_by_course_no(params[:keyword])
+
       if(@courses.present?)
         @stores = @courses.stores
+      elsif User.find_by_email(params[:keyword]).present?
+        @stores = User.find_by_email(params[:keyword]).stores
       else
         @stores = Store.all
       end
@@ -15,7 +18,6 @@ class PagesController < ApplicationController
 
     if current_user.present?
       @courseoffer = CourseOffer.all
-
       @user = User.find current_user.id
       @passedCourse = @user.stores.where("cgpa >= ?", 2.0 )
       @registercourse = @user.stores.where(:cgpa => nil)
@@ -33,7 +35,12 @@ class PagesController < ApplicationController
   def profile
 
     if current_user.present?
-      @email = User.find current_user.id
+      @user = User.find current_user.id
+      if @user.userdetail.present?
+        @userdetail = current_user.userdetail
+      else
+        @userdetail = Userdetail.create({user_id: @user.id})
+      end
     else
       redirect_to root_url
     end

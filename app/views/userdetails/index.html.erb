@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Userdetails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Line1</th>
+      <th>Line2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th>Contact no</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @userdetails.each do |userdetail| %>
+      <tr>
+        <td><%= userdetail.user_id %></td>
+        <td><%= userdetail.line1 %></td>
+        <td><%= userdetail.line2 %></td>
+        <td><%= userdetail.city %></td>
+        <td><%= userdetail.state %></td>
+        <td><%= userdetail.zip %></td>
+        <td><%= userdetail.country %></td>
+        <td><%= userdetail.contact_no %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Userdetail',  new_user_userdetail_path(@user) %>

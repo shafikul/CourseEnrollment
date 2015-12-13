@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :stores, dependent: :destroy
   has_many :courses, through: :stores
+  has_one :userdetail
   mount_uploader :image_url, PictureUploader
 
   def courses_by_semester semester_id

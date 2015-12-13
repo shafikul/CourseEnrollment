@@ -1,28 +1,25 @@
 class CoursesController < ApplicationController
+
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user?
-  # GET /courses
-  # GET /courses.json
+
+
   def index
     @courses = Course.all
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
   def show
   end
 
-  # GET /courses/new
+
   def new
     @course = Course.new
   end
 
-  # GET /courses/1/edit
+
   def edit
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
     @course = Course.new(course_params)
 
@@ -41,8 +38,8 @@ class CoursesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
+
+
   def update
     respond_to do |format|
       if @course.update(course_params)
@@ -55,8 +52,8 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
+
+
   def destroy
     @course.destroy
     respond_to do |format|
@@ -71,13 +68,15 @@ class CoursesController < ApplicationController
       @course = Course.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def course_params
       params.require(:course).permit(:name, :course_no)
     end
-  def logged_in_user?
-    unless current_user.present? #&& is_admin?(current_user)
-      redirect_to root_url
+
+    def logged_in_user?
+      unless current_user.present? #&& is_admin?(current_user)
+        redirect_to root_url
+      end
     end
-  end
+
 end
