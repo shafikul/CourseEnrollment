@@ -15,3 +15,10 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.top-space{
+    padding: 50px 0px;
+    text-align: center;
+    background-color: #B84D45;
+    background-image: url('/bg.png');
+}

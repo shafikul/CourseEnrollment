@@ -9,12 +9,14 @@
 <body>
 
 <%= render '/layouts/nav' %>
-<div class="top-space"></div>
+
+<div class="top-space">
 <div class="container">
   <span class="notice"><%= notice %></span>
   <span class="alert"><%= alert %></span>
 
   <%= yield %>
+</div>
 </div>
 
 </body>

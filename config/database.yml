@@ -14,8 +14,9 @@ test:
   <<: *default
   database: course_enrollment_test
 
-#production:
-#  <<: *default
-#  database: course_enrollment_production
-#  username: course_enrollment
-#  password: <%= ENV['MYSQLTEST_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: course_enrollment_production
+  username: course_enrollment
+  password: <%= ENV['MYSQLTEST_DATABASE_PASSWORD'] %>
+

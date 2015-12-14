@@ -17,6 +17,7 @@ class PagesController < ApplicationController
     end
 
     if current_user.present?
+
       @courseoffer = CourseOffer.all
       @user = User.find current_user.id
       @passedCourse = @user.stores.where("cgpa >= ?", 2.0 )

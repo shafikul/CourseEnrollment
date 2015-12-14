@@ -5,8 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 
 
-
+gem 'mysql2', '~> 0.3.8'
 gem 'devise'
+
+
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
@@ -38,11 +40,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'mysql2', '~> 0.3.8'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
 
 end
+
+
+
